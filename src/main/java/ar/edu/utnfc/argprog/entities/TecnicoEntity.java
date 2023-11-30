@@ -7,7 +7,6 @@ package ar.edu.utnfc.argprog.entities;
 
 
 import java.io.Serializable;
-import jakarta.persistence.*;
 
 /**
  *

@@ -2,7 +2,7 @@ package ar.edu.utnfc.argprog.data.repositories;
 
 
 import ar.edu.utnfc.argprog.entities.EspecialidadContratadaEntity;
-import ar.edu.utnfc.argprog.sakila.commons.exceptions.TechnicalException;
+import ar.edu.utnfc.argprog.commons.exceptions.TechnicalException;
 import ar.edu.utnfc.argprog.sakila.data.commons.Repository;
 import jakarta.persistence.Query;
 import org.hibernate.HibernateException;
