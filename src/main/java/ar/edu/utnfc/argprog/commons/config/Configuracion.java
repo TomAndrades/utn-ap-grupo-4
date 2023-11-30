@@ -1,4 +1,4 @@
-package ar.edu.utnfc.argprog.sakila.commons.config;
+package ar.edu.utnfc.argprog.commons.config;
 
 import java.io.IOException;
 import java.io.InputStream;

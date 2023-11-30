@@ -6,8 +6,6 @@
 package ar.edu.utnfc.argprog.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.Date;
 import jakarta.persistence.*;
 
 /**
@@ -44,8 +42,7 @@ public class ClienteEntity implements Serializable
     @Basic(optional = false)
     @Column(name = "cel")
     private String cel;
-    
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ClienteEntity")
+
     
 
     public ClienteEntity()

@@ -7,6 +7,7 @@ package ar.edu.utnfc.argprog.entities;
 
 import ar.edu.utnfc.argprog.data.commons.DalEntity;
 import java.io.Serializable;
+import jakarta.persistence.*;
 
 /**
  *
@@ -19,7 +20,7 @@ import java.io.Serializable;
     @NamedQuery(name = "ProblemaIncidenteEntity.findAll", query = "SELECT p FROM ProblemaIncidenteEntity p"),
     
 })
-public class ProblemaIncidenteEntity implements DalEntity, Serializable
+public class ProblemaIncidenteEntity extends DalEntity implements Serializable
 {
     private static final long serialVersionUID = 1L;
     @Id

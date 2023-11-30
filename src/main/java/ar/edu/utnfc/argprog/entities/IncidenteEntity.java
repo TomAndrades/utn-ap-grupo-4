@@ -6,9 +6,9 @@
 package ar.edu.utnfc.argprog.entities;
 
 import ar.edu.utnfc.argprog.data.commons.DalEntity;
+import jakarta.persistence.*;
+
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Collection;
 import java.util.Date;
 
 /**
@@ -22,7 +22,7 @@ import java.util.Date;
     @NamedQuery(name = "IncidenteEntity.findAll", query = "SELECT i FROM IncidenteEntity i"),
     
 })
-public class IncidenteEntity implements DalEntity, Serializable
+public class IncidenteEntity extends DalEntity implements Serializable
 {
     private static final long serialVersionUID = 1L;
     @Id
@@ -48,9 +48,6 @@ public class IncidenteEntity implements DalEntity, Serializable
     @Column(name = "fechaSolucion")
     @Temporal(TemporalType.DATE)
     private Date fechaSolucion;
-
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "IncidenteEntity")
     
 
     public IncidenteEntity()

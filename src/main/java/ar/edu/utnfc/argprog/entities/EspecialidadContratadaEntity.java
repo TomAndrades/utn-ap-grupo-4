@@ -7,7 +7,7 @@ package ar.edu.utnfc.argprog.entities;
 
 import ar.edu.utnfc.argprog.data.commons.DalEntity;
 import java.io.Serializable;
-import java.util.Date;
+import jakarta.persistence.*;
 
 /**
  *
@@ -20,7 +20,7 @@ import java.util.Date;
     @NamedQuery(name = "EspecialidadContratadaEntity.findAll", query = "SELECT e FROM EspecialidadContratadaEntity e"),
     
 })
-public class EspecialidadContratadaEntity implements DalEntity, Serializable
+public class EspecialidadContratadaEntity extends DalEntity implements Serializable
 {
     private static final long serialVersionUID = 1L;
     @Id
@@ -35,9 +35,6 @@ public class EspecialidadContratadaEntity implements DalEntity, Serializable
     @ManyToOne
     private ClienteEntity clienteEntity;
 
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "IncidenteEntity")
-    
 
     public EspecialidadContratadaEntity()
     {
