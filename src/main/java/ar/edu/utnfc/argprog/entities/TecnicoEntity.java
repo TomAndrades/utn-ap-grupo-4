@@ -18,7 +18,7 @@ import jakarta.persistence.*;
 @NamedQueries(
 {
     @NamedQuery(name = "TecnicoEntity.findAll", query = "SELECT t FROM TecnicoEntity t"),
-    @NamedQuery(name = "TecnicoEntity.findTecnicoById", query = "SELECT t FROM TecnicoEntity t WHERE t.idTecnico = :idTecnico"),
+    @NamedQuery(name = "TecnicoEntity.findById", query = "SELECT t FROM TecnicoEntity t WHERE t.idTecnico = :idTecnico"),
     @NamedQuery(name = "TecnicoEntity.findByLegajo", query = "SELECT t FROM TecnicoEntity t WHERE t.legajo = :legajo"),
     @NamedQuery(name = "TecnicoEntity.findByName", query = "SELECT t FROM TecnicoEntity t WHERE t.nombre = :nombre"),
     @NamedQuery(name = "TecnicoEntity.findByDni", query = "SELECT t FROM TecnicoEntity t WHERE t.dni = :dni")

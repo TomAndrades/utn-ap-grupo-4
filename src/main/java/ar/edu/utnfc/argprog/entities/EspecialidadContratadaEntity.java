@@ -18,7 +18,8 @@ import jakarta.persistence.*;
 @NamedQueries(
 {
     @NamedQuery(name = "EspecialidadContratadaEntity.findAll", query = "SELECT e FROM EspecialidadContratadaEntity e"),
-    
+    @NamedQuery(name = "EspecialidadContratadaEntity.findbyClienteCUIT", query = "SELECT e FROM EspecialidadContradaEntity e WHERE e.clienteEntity.cuit = :cuit"),
+    @NamedQuery(name = "EspecialidadContratadaEntity.findbyClienteRazonSocial", query = "SELECT e FROM EspecialidadContradaEntity e WHERE e.clienteEntity.razonSocial = :razonSocial")
 })
 public class EspecialidadContratadaEntity extends DalEntity implements Serializable
 {

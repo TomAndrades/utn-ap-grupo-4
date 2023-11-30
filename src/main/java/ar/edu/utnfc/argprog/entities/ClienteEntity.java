@@ -19,7 +19,7 @@ import jakarta.persistence.*;
     @NamedQuery(name = "ClienteEntity.findAll", query = "SELECT c FROM ClienteEntity c"),
     @NamedQuery(name = "ClienteEntity.findByClienteId", query = "SELECT c FROM ClienteEntity c WHERE c.idCliente = :idCliente"),
     @NamedQuery(name = "ClienteEntity.findByRazonSocial", query = "SELECT c FROM ClienteEntity  c WHERE c.razonSocial = :razonSocial"),
-    @NamedQuery(name = "ClienteEntity.findByCUIT", query = "SELECT c FROM ClienteEntity  c WHERE c.cuit = :cuit")
+    @NamedQuery(name = "ClienteEntity.findByCUIT", query = "SELECT c FROM ClienteEntity c WHERE c.cuit = :cuit")
 })
 
 public class ClienteEntity implements Serializable
