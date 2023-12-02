@@ -95,7 +95,7 @@
           <configuration>
             <archive>
               <manifest>
-                <mainClass>ar.edu.utnfc.argprog.App</mainClass>
+                <mainClass>ar.edu.utnfc.argprog.grupo4.App</mainClass>
               </manifest>
             </archive>
           </configuration>
