@@ -4,6 +4,7 @@ import java.util.List;
 
 import ar.edu.utnfc.argprog.grupo4.commons.ReflectionUtil;
 import ar.edu.utnfc.argprog.grupo4.commons.exceptions.TechnicalException;
+import ar.edu.utnfc.argprog.grupo4.data.entities.ClienteEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 
