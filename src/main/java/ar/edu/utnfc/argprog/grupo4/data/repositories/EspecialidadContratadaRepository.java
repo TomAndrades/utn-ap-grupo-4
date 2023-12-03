@@ -36,7 +36,7 @@ public class EspecialidadContratadaRepository extends Repository<EspecialidadCon
         try {
 
             String className = getEntityClass().getSimpleName();
-            Query query = entityManager.createNamedQuery("EspecialidadContratadaEntity.findbyClienteRazonSocial")
+            Query query = entityManager.createNamedQuery("EspecialidadContratadaEntity.findClientebyRazonSocial")
                     .setParameter("razonSocial", razonSocial);
 
             return query.getResultList();

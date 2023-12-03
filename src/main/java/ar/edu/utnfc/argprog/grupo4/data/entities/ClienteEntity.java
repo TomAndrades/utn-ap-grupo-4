@@ -122,9 +122,14 @@ public class ClienteEntity implements DalEntity, Serializable
     }
 
     @Override
-    public String toString()
-    {
-        return "ar.edu.utnfc.argprog.data.entities.ClienteEntity[ customerId=" + idCliente + " ]";
+    public String toString() {
+        return "ClienteEntity{" +
+                "idCliente=" + idCliente +
+                "\n, razonSocial='" + razonSocial + '\'' +
+                "\n, cuit='" + cuit + '\'' +
+                "\n, mail='" + mail + '\'' +
+                "\n, cel='" + cel + '\'' +
+                "\n}";
     }
-    
+
 }

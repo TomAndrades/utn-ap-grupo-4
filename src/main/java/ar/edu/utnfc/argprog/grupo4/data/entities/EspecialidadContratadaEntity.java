@@ -89,11 +89,14 @@ public class EspecialidadContratadaEntity implements DalEntity, Serializable
     }
 
     @Override
-    public String toString()
-    {
-        return "ar.edu.utnfc.argprog.data.entities.EspecialidadContratadaEntity[ idEspecialidadContratada= " + idEspecialidadContratada + " ]";
+    public String toString() {
+        return "EspecialidadContratadaEntity{" +
+                "idEspecialidadContratada=" + idEspecialidadContratada +
+                ", especialidadEntity=" + especialidadEntity +
+                ", clienteEntity=" + clienteEntity +
+                '}';
     }
-    
+
 }
 
 

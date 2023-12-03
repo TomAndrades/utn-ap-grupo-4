@@ -90,10 +90,13 @@ public class EspecialidadEntity implements DalEntity, Serializable
     }
 
     @Override
-    public String toString()
-    {
-        return "EspecialidadEntity{ idEspecialidad=" + idEspecialidad + ", nombre="+ nombre +" }";
+    public String toString() {
+        return "EspecialidadEntity{" +
+                "idEspecialidad=" + idEspecialidad +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                '}';
     }
-    
+
 }
 
