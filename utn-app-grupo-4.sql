@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cliente` (
-  `idCliente` int(11) NOT NULL,
-  `razonSocial` varchar(200) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `razon_social` varchar(200) NOT NULL,
   `cuit` int(11) NOT NULL,
   `mail` varchar(120) NOT NULL,
   `cel` varchar(120) NOT NULL
@@ -42,10 +42,9 @@ CREATE TABLE `cliente` (
 --
 
 CREATE TABLE `especialidad` (
-  `idEspecialidad` int(11) NOT NULL,
+  `id_especialidad` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
-  `descripcion` varchar(500) NOT NULL,
-  `especialidadCol` varchar(45) NOT NULL
+  `descripcion` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -54,10 +53,10 @@ CREATE TABLE `especialidad` (
 -- Table structure for table `especialidadcontratada`
 --
 
-CREATE TABLE `especialidadcontratada` (
-  `idEspecialidadContratada` int(11) NOT NULL,
-  `idEspecialidad` int(11) NOT NULL,
-  `idCliente` int(11) NOT NULL
+CREATE TABLE `especialidad_contratada` (
+  `id_especialidad_contratada` int(11) NOT NULL,
+  `id_especialidad` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -66,10 +65,10 @@ CREATE TABLE `especialidadcontratada` (
 -- Table structure for table `especialidadtecnico`
 --
 
-CREATE TABLE `especialidadtecnico` (
-  `idEspecialidadTecnico` int(11) NOT NULL,
-  `idEspecialidad` int(11) NOT NULL,
-  `idTecnico` int(11) NOT NULL
+CREATE TABLE `especialidad_tecnico` (
+  `id_especialidad_tecnico` int(11) NOT NULL,
+  `id_especialidad` int(11) NOT NULL,
+  `id_tecnico` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -79,10 +78,10 @@ CREATE TABLE `especialidadtecnico` (
 --
 
 CREATE TABLE `incidente` (
-  `idIncidente` int(11) NOT NULL,
-  `idCliente` int(11) NOT NULL,
-  `idEspecialidad` int(11) NOT NULL,
-  `idTecnico` int(11) NOT NULL,
+  `id_incidente` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `id_especialidad` int(11) NOT NULL,
+  `id_tecnico` int(11) NOT NULL,
   `resuelto` varchar(1) NOT NULL,
   `fechaCreacion` datetime NOT NULL,
   `fechaSolucion` datetime NOT NULL,
@@ -95,8 +94,8 @@ CREATE TABLE `incidente` (
 -- Table structure for table `problemaincidente`
 --
 
-CREATE TABLE `problemaincidente` (
-  `idProblemaIncidente` int(11) NOT NULL,
+CREATE TABLE `problema_incidente` (
+  `id_problema_incidente` int(11) NOT NULL,
   `idIncidente` int(11) NOT NULL,
   `descripcion` varchar(2000) NOT NULL,
   `tipo` varchar(200) NOT NULL,
@@ -110,7 +109,7 @@ CREATE TABLE `problemaincidente` (
 --
 
 CREATE TABLE `tecnico` (
-  `idTecnico` int(11) NOT NULL,
+  `id_tecnico` int(11) NOT NULL,
   `legajo` int(11) NOT NULL,
   `nombre` varchar(200) NOT NULL,
   `dni` int(11) NOT NULL,
@@ -126,39 +125,40 @@ CREATE TABLE `tecnico` (
 -- Indexes for table `cliente`
 --
 ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`idCliente`);
+  ADD PRIMARY KEY (`id_cliente`);
 
 --
 -- Indexes for table `especialidad`
 --
 ALTER TABLE `especialidad`
-  ADD PRIMARY KEY (`idEspecialidad`);
+  ADD PRIMARY KEY (`id_especialidad`);
 
 --
 -- Indexes for table `especialidadtecnico`
 --
-ALTER TABLE `especialidadtecnico`
-  ADD PRIMARY KEY (`idEspecialidadTecnico`);
+ALTER TABLE `especialidad_tecnico`
+  ADD PRIMARY KEY (`id_especialidad_tecnico`);
 
 --
 -- Indexes for table `incidente`
 --
 ALTER TABLE `incidente`
-  ADD PRIMARY KEY (`idIncidente`);
+  ADD PRIMARY KEY (`id_incidente`);
 
 --
 -- Indexes for table `problemaincidente`
 --
-ALTER TABLE `problemaincidente`
-  ADD PRIMARY KEY (`idProblemaIncidente`);
+ALTER TABLE `problema_incidente`
+  ADD PRIMARY KEY (`id_problema_incidente`);
 
 --
 -- Indexes for table `tecnico`
 --
 ALTER TABLE `tecnico`
-  ADD PRIMARY KEY (`idTecnico`);
+  ADD PRIMARY KEY (`id_tecnico`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+cliente

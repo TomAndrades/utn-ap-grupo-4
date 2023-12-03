@@ -15,14 +15,16 @@ import jakarta.persistence.*;
  * @author Loa
  */
 @Entity
-@Table(name = "cliente")
+@Table(name = "clientes")
 @NamedQueries(
 {
-    @NamedQuery(name = "ClienteEntity.findAll", query = "SELECT c FROM ClienteEntity c"),
-    @NamedQuery(name = "ClienteEntity.findByClienteId", query = "SELECT c FROM ClienteEntity c WHERE c.idCliente = :idCliente"),
-    @NamedQuery(name = "ClienteEntity.findByRazonSocial", query = "SELECT c FROM ClienteEntity  c WHERE c.razonSocial = :razonSocial"),
-    @NamedQuery(name = "ClienteEntity.findByCUIT", query = "SELECT c FROM ClienteEntity c WHERE c.cuit = :cuit")
+    @NamedQuery(name = "ClienteEntity.findAll", query = "SELECT c FROM ClienteEntity c")
 })
+//,
+//    @NamedQuery(name = "ClienteEntity.findByClienteId", query = "SELECT c FROM ClienteEntity c WHERE c.idCliente = :idCliente"),
+//    @NamedQuery(name = "ClienteEntity.findByRazonSocial", query = "SELECT c FROM ClienteEntity  c WHERE c.razonSocial = :razonSocial"),
+//    @NamedQuery(name = "ClienteEntity.findByCUIT", query = "SELECT c FROM ClienteEntity c WHERE c.cuit = :cuit")
+//})
 
 public class ClienteEntity implements DalEntity, Serializable
 {
@@ -30,10 +32,10 @@ public class ClienteEntity implements DalEntity, Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_cliente")
+    @Column(name = "idCliente")
     private Short idCliente;
     @Basic(optional = false)
-    @Column(name = "razon_social")
+    @Column(name = "razonSocial")
     private String razonSocial;
     @Basic(optional = false)
     @Column(name = "cuit")
@@ -51,9 +53,9 @@ public class ClienteEntity implements DalEntity, Serializable
     {
     }
 
-    public ClienteEntity(Short idCliente)
+    public ClienteEntity(Short idClientes)
     {
-        this.idCliente = idCliente;
+        this.idCliente = idClientes;
     }
 
     public Short getIdCliente() {

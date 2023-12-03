@@ -16,14 +16,14 @@ import jakarta.persistence.*;
  * @author Loa
  */
 @Entity
-@Table(name = "tecnico")
+@Table(name = "tecnicos")
 @NamedQueries(
 {
     @NamedQuery(name = "TecnicoEntity.findAll", query = "SELECT t FROM TecnicoEntity t"),
-    @NamedQuery(name = "TecnicoEntity.findById", query = "SELECT t FROM TecnicoEntity t WHERE t.idTecnico = :idTecnico"),
-    @NamedQuery(name = "TecnicoEntity.findByLegajo", query = "SELECT t FROM TecnicoEntity t WHERE t.legajo = :legajo"),
-    @NamedQuery(name = "TecnicoEntity.findByName", query = "SELECT t FROM TecnicoEntity t WHERE t.nombre = :nombre"),
-    @NamedQuery(name = "TecnicoEntity.findByDni", query = "SELECT t FROM TecnicoEntity t WHERE t.dni = :dni")
+//    @NamedQuery(name = "TecnicoEntity.findById", query = "SELECT t FROM TecnicoEntity t WHERE t.idTecnico = :idTecnico"),
+//    @NamedQuery(name = "TecnicoEntity.findByLegajo", query = "SELECT t FROM TecnicoEntity t WHERE t.legajo = :legajo"),
+//    @NamedQuery(name = "TecnicoEntity.findByName", query = "SELECT t FROM TecnicoEntity t WHERE t.nombre = :nombre"),
+//    @NamedQuery(name = "TecnicoEntity.findByDni", query = "SELECT t FROM TecnicoEntity t WHERE t.dni = :dni")
 })
 public class TecnicoEntity implements DalEntity,Serializable
 {
@@ -31,7 +31,7 @@ public class TecnicoEntity implements DalEntity,Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_tecnico")
+    @Column(name = "idTecnico")
     private Short idTecnico;
     @Basic(optional = false)
     @Column(name = "legajo")

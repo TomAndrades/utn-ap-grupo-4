@@ -15,7 +15,7 @@ import java.io.Serializable;
  * @author Loa
  */
 @Entity
-@Table(name = "especialidad")
+@Table(name = "especialidades")
 @NamedQueries(
 {
     @NamedQuery(name = "EspecialidadEntity.findAll", query = "SELECT e FROM EspecialidadEntity e"),
@@ -27,7 +27,7 @@ public class EspecialidadEntity implements DalEntity, Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_especialidad")
+    @Column(name = "idEspecialidad")
     private Short idEspecialidad;
     @Basic(optional = false)
     @Column(name = "nombre")

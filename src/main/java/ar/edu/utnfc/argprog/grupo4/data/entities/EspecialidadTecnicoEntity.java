@@ -15,7 +15,7 @@ import jakarta.persistence.*;
  * @author Loa
  */
 @Entity
-@Table(name = "especialidadtecnico")
+@Table(name = "especialidades_tecnico")
 @NamedQueries(
 {
     @NamedQuery(name = "EspecialidadTecnicoEntity.findAll", query = "SELECT e FROM EspecialidadTecnicoEntity e"),

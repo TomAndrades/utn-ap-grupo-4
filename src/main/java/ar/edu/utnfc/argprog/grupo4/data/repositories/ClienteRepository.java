@@ -5,10 +5,16 @@
  */
 package ar.edu.utnfc.argprog.grupo4.data.repositories;
 
+import ar.edu.utnfc.argprog.grupo4.data.commons.Repository;
+import ar.edu.utnfc.argprog.grupo4.data.entities.ClienteEntity;
+
+import java.util.List;
+
 /**
  *
  * @author Loa
+ * @author Tomás
  */
-public class ClienteRepository {
+public class ClienteRepository extends Repository<ClienteEntity, Integer> {
     
 }

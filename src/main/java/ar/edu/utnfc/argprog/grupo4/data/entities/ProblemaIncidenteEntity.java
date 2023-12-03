@@ -15,7 +15,7 @@ import jakarta.persistence.*;
  * @author Loa
  */
 @Entity
-@Table(name = "problemaincidente")
+@Table(name = "problemas_incidentes")
 @NamedQueries(
 {
     @NamedQuery(name = "ProblemaIncidenteEntity.findAll", query = "SELECT p FROM ProblemaIncidenteEntity p"),
@@ -27,9 +27,9 @@ public class ProblemaIncidenteEntity implements DalEntity,Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_problema_incidente")
+    @Column(name = "idProblemaIncidente")
     private Short idProblemaIncidente;
-    @JoinColumn(name = "idIncidente", referencedColumnName = "id_incidente")
+    @JoinColumn(name = "idIncidente", referencedColumnName = "idIncidente")
     @ManyToOne
     private IncidenteEntity incidenteEntity;
     @Basic(optional = false)

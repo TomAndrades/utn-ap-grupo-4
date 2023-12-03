@@ -16,7 +16,7 @@ import java.util.Date;
  * @author Loa
  */
 @Entity
-@Table(name = "incidente")
+@Table(name = "incidentes")
 @NamedQueries(
 {
     @NamedQuery(name = "IncidenteEntity.findAll", query = "SELECT i FROM IncidenteEntity i"),
@@ -29,15 +29,15 @@ public class IncidenteEntity implements DalEntity,Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_incidente")
+    @Column(name = "idIncidente")
     private Short idIncidente;
-    @JoinColumn(name = "idCliente", referencedColumnName = "id_cliente")
+    @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
     @ManyToOne
     private ClienteEntity clienteEntity;
-    @JoinColumn(name = "idEspecialidad", referencedColumnName = "id_especialidad")
+    @JoinColumn(name = "idEspecialidad", referencedColumnName = "idEspecialidad")
     @ManyToOne
     private EspecialidadEntity especialidadEntity;
-    @JoinColumn(name = "idTecnico", referencedColumnName = "id_tecnico")
+    @JoinColumn(name = "idTecnico", referencedColumnName = "idTecnico")
     @ManyToOne
     private TecnicoEntity tecnicoEntity;
     @Basic(optional = false)

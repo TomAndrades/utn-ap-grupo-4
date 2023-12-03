@@ -15,25 +15,25 @@ import jakarta.persistence.*;
  * @author Loa
  */
 @Entity
-@Table(name = "especialidadcontratada")
-@NamedQueries(
-{
-    @NamedQuery(name = "EspecialidadContratadaEntity.findAll", query = "SELECT e FROM EspecialidadContratadaEntity e"),
-    @NamedQuery(name = "EspecialidadContratadaEntity.findbyClienteCUIT", query = "SELECT e FROM EspecialidadContradaEntity e WHERE e.clienteEntity.cuit = :cuit"),
-    @NamedQuery(name = "EspecialidadContratadaEntity.findbyClienteRazonSocial", query = "SELECT e FROM EspecialidadContradaEntity e WHERE e.clienteEntity.razonSocial = :razonSocial")
-})
+@Table(name = "especialidades_contratadas")
+//@NamedQueries(
+//{
+//    @NamedQuery(name = "EspecialidadContratadaEntity.findAll", query = "SELECT e FROM EspecialidadContratadaEntity e"),
+//    @NamedQuery(name = "EspecialidadContratadaEntity.findbyClienteCUIT", query = "SELECT e FROM EspecialidadContradaEntity e WHERE e.clienteEntity.cuit = :cuit"),
+//    @NamedQuery(name = "EspecialidadContratadaEntity.findbyClienteRazonSocial", query = "SELECT e FROM EspecialidadContradaEntity e WHERE e.clienteEntity.razonSocial = :razonSocial")
+//})
 public class EspecialidadContratadaEntity implements DalEntity, Serializable
 {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_especialidad_contratada")
+    @Column(name = "idEspecialidadContratada")
     private Short idEspecialidadContratada;
-    @JoinColumn(name = "idEspecialidad", referencedColumnName = "id_especialidad")
+    @JoinColumn(name = "idEspecialidad", referencedColumnName = "idEspecialidad")
     @ManyToOne
     private EspecialidadEntity especialidadEntity;
-    @JoinColumn(name = "idCliente", referencedColumnName = "id_cliente")
+    @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
     @ManyToOne
     private ClienteEntity clienteEntity;
 
