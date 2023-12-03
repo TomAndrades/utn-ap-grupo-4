@@ -10,10 +10,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-/**
- *
- * @author Felipe
- */
 public class LocalEntityManagerProvider
 {
     private static LocalEntityManagerProvider emProv;

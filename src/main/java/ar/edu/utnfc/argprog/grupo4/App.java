@@ -6,10 +6,6 @@ import ar.edu.utnfc.argprog.grupo4.data.repositories.EspecialidadRepository;
 
 import java.util.List;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )

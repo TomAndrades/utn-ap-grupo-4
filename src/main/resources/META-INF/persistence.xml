@@ -5,9 +5,9 @@
     <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
     <properties>
       <!--      Propiedades de conexión a la base de datos-->
-      <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/utn-app-grupo-4"/>
+      <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ingredorintermedio"/>
       <property name="jakarta.persistence.jdbc.user" value="root"/>
-      <property name="jakarta.persistence.jdbc.password" value="DEVeloping1234"/>
+      <property name="jakarta.persistence.jdbc.password" value="31928264As"/>
       <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
 
       <!-- Propiedades adicionales de Hibernate -->
