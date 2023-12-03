@@ -16,5 +16,4 @@ import java.util.List;
  * @author Tomás
  */
 public class ClienteRepository extends Repository<ClienteEntity, Integer> {
-    
 }

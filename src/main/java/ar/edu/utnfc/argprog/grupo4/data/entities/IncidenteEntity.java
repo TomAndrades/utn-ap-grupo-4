@@ -6,10 +6,13 @@
 package ar.edu.utnfc.argprog.grupo4.data.entities;
 
 import ar.edu.utnfc.argprog.grupo4.data.commons.DalEntity;
+import ar.edu.utnfc.argprog.grupo4.data.repositories.ClienteRepository;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 /**
@@ -46,10 +49,10 @@ public class IncidenteEntity implements DalEntity,Serializable
     private boolean resuelto;
     @Column(name = "fechaCreacion")
     @Temporal(TemporalType.DATE)
-    private LocalDateTime fechaCreacion;
+    private Date fechaCreacion;
     @Column(name = "fechaSolucion")
     @Temporal(TemporalType.DATE)
-    private LocalDateTime fechaSolucion;
+    private Date fechaSolucion;
     @Column(name = "descripcion")
     private String descripcion;
     
@@ -60,16 +63,12 @@ public class IncidenteEntity implements DalEntity,Serializable
 
     public IncidenteEntity(String descripcion) {
         this.resuelto = false;
-        this.fechaCreacion = LocalDateTime.now();
+        this.fechaCreacion = getDateNow();
         this.descripcion = descripcion;
     }
 
     public Short getIdIncidente() {
         return idIncidente;
-    }
-
-    public void setIdIncidente(Short idIncidente) {
-        this.idIncidente = idIncidente;
     }
 
     public ClienteEntity getClienteEntity() {
@@ -102,24 +101,15 @@ public class IncidenteEntity implements DalEntity,Serializable
 
     public void setResuelto() {
         this.resuelto = true;
+        this.fechaSolucion = getDateNow();
     }
 
-    public LocalDateTime getFechaCreacion() {
+    public Date getFechaCreacion() {
         return fechaCreacion;
     }
-
-    public void setFechaCreacion(LocalDateTime fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
-
-    public LocalDateTime getFechaSolucion() {
+    public Date getFechaSolucion() {
         return fechaSolucion;
     }
-
-    public void setFechaSolucion(LocalDateTime fechaSolucion) {
-        this.fechaSolucion = fechaSolucion;
-    }
-
     public String getDescripcion() {
         return descripcion;
     }
@@ -127,6 +117,9 @@ public class IncidenteEntity implements DalEntity,Serializable
         this.descripcion = descripcion;
     }
 
+    public Date getDateNow(){
+        return Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
+    }
     @Override
     public int hashCode()
     {

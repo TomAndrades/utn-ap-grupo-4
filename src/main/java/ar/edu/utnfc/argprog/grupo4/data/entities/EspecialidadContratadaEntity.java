@@ -16,12 +16,12 @@ import jakarta.persistence.*;
  */
 @Entity
 @Table(name = "especialidades_contratadas")
-//@NamedQueries(
-//{
-//    @NamedQuery(name = "EspecialidadContratadaEntity.findAll", query = "SELECT e FROM EspecialidadContratadaEntity e"),
-//    @NamedQuery(name = "EspecialidadContratadaEntity.findbyClienteCUIT", query = "SELECT e FROM EspecialidadContradaEntity e WHERE e.clienteEntity.cuit = :cuit"),
-//    @NamedQuery(name = "EspecialidadContratadaEntity.findbyClienteRazonSocial", query = "SELECT e FROM EspecialidadContradaEntity e WHERE e.clienteEntity.razonSocial = :razonSocial")
-//})
+@NamedQueries(
+{
+        @NamedQuery(name = "EspecialidadContratadaEntity.findAll", query = "SELECT e FROM EspecialidadContratadaEntity e"),
+        @NamedQuery(name = "EspecialidadContratadaEntity.findClienteByCuit", query = "SELECT e FROM EspecialidadContratadaEntity e WHERE e.clienteEntity.cuit = :cuit"),
+        @NamedQuery(name = "EspecialidadContratadaEntity.findClientebyRazonSocial", query = "SELECT e FROM EspecialidadContratadaEntity e WHERE e.clienteEntity.razonSocial = :razonSocial")
+})
 public class EspecialidadContratadaEntity implements DalEntity, Serializable
 {
     private static final long serialVersionUID = 1L;
@@ -41,7 +41,6 @@ public class EspecialidadContratadaEntity implements DalEntity, Serializable
     public EspecialidadContratadaEntity()
     {
     }
-
 
 
     public Short getIdEspecialidadContratada() {

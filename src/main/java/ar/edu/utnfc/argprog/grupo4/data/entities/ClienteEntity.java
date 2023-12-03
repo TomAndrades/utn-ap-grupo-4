@@ -18,13 +18,11 @@ import jakarta.persistence.*;
 @Table(name = "clientes")
 @NamedQueries(
 {
-    @NamedQuery(name = "ClienteEntity.findAll", query = "SELECT c FROM ClienteEntity c")
+    @NamedQuery(name = "ClienteEntity.findAll", query = "SELECT c FROM ClienteEntity c"),
+    @NamedQuery(name = "ClienteEntity.findByClienteId", query = "SELECT c FROM ClienteEntity c WHERE c.idCliente = :idCliente"),
+    @NamedQuery(name = "ClienteEntity.findByRazonSocial", query = "SELECT c FROM ClienteEntity  c WHERE c.razonSocial = :razonSocial"),
+    @NamedQuery(name = "ClienteEntity.findByCUIT", query = "SELECT c FROM ClienteEntity c WHERE c.cuit = :cuit")
 })
-//,
-//    @NamedQuery(name = "ClienteEntity.findByClienteId", query = "SELECT c FROM ClienteEntity c WHERE c.idCliente = :idCliente"),
-//    @NamedQuery(name = "ClienteEntity.findByRazonSocial", query = "SELECT c FROM ClienteEntity  c WHERE c.razonSocial = :razonSocial"),
-//    @NamedQuery(name = "ClienteEntity.findByCUIT", query = "SELECT c FROM ClienteEntity c WHERE c.cuit = :cuit")
-//})
 
 public class ClienteEntity implements DalEntity, Serializable
 {
@@ -39,7 +37,7 @@ public class ClienteEntity implements DalEntity, Serializable
     private String razonSocial;
     @Basic(optional = false)
     @Column(name = "cuit")
-    private int cuit;
+    private String cuit;
     @Basic(optional = false)
     @Column(name = "mail")
     private String mail;
@@ -47,13 +45,14 @@ public class ClienteEntity implements DalEntity, Serializable
     @Column(name = "cel")
     private String cel;
 
+
     
 
     public ClienteEntity()
     {
     }
 
-    public ClienteEntity(String razonSocial, int cuit, String mail, String cel) {
+    public ClienteEntity(String razonSocial, String cuit, String mail, String cel) {
         this.razonSocial = razonSocial;
         this.cuit = cuit;
         this.mail = mail;
@@ -72,11 +71,11 @@ public class ClienteEntity implements DalEntity, Serializable
         this.razonSocial = razonSocial;
     }
 
-    public int getCuit() {
+    public String getCuit() {
         return cuit;
     }
 
-    public void setCuit(int cuit) {
+    public void setCuit(String cuit) {
         this.cuit = cuit;
     }
 

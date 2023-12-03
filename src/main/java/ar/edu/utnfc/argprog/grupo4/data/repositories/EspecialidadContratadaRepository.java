@@ -11,7 +11,7 @@ import java.util.List;
 
 public class EspecialidadContratadaRepository extends Repository<EspecialidadContratadaEntity, Integer> {
 
-    public List<EspecialidadContratadaEntity> findByClienteCUIT(int CUIT) {
+    public List<EspecialidadContratadaEntity> findClienteByCuit(String cuit) {
         try {
 //            String className = getEntityClass().getSimpleName();
 //            ClienteEntity query = entityManager.createNamedQuery("ClienteEntity.findByCUIT")
@@ -20,8 +20,8 @@ public class EspecialidadContratadaRepository extends Repository<EspecialidadCon
 //            query.getIdCliente();
 
             String className = getEntityClass().getSimpleName();
-            Query query = entityManager.createNamedQuery("EspecialidadContratadaEntity.findbyClienteCUIT")
-                    .setParameter("cuit", CUIT);
+            Query query = entityManager.createNamedQuery("EspecialidadContratadaEntity.findClienteByCuit")
+                    .setParameter("cuit", cuit);
 
             return query.getResultList();
             
@@ -32,7 +32,7 @@ public class EspecialidadContratadaRepository extends Repository<EspecialidadCon
         }
     }
     
-    public List<EspecialidadContratadaEntity> findByClienteRazonSocial(int razonSocial) {
+    public List<EspecialidadContratadaEntity> findClienteByRazonSocial(String razonSocial) {
         try {
 
             String className = getEntityClass().getSimpleName();
@@ -40,8 +40,8 @@ public class EspecialidadContratadaRepository extends Repository<EspecialidadCon
                     .setParameter("razonSocial", razonSocial);
 
             return query.getResultList();
-            
-           
+
+
         }
         catch (HibernateException ex) {
             throw new TechnicalException(ex);
