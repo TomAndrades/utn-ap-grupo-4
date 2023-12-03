@@ -28,7 +28,7 @@ public class EspecialidadContratadaEntity implements DalEntity, Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idEspecialidadContratada")
+    @Column(name = "idEspecialidad_Contratada")
     private Short idEspecialidadContratada;
     @JoinColumn(name = "idEspecialidad", referencedColumnName = "idEspecialidad")
     @ManyToOne
@@ -42,23 +42,10 @@ public class EspecialidadContratadaEntity implements DalEntity, Serializable
     {
     }
 
-    public EspecialidadContratadaEntity(Short idEspecialidadContratada)
-    {
-        this.idEspecialidadContratada = idEspecialidadContratada;
-    }
 
-    public EspecialidadContratadaEntity(Short idEspecialidadContratada, EspecialidadEntity especialidadEntity, ClienteEntity clienteEntity) {
-        this.idEspecialidadContratada = idEspecialidadContratada;
-        this.especialidadEntity = especialidadEntity;
-        this.clienteEntity = clienteEntity;
-    }
 
     public Short getIdEspecialidadContratada() {
         return idEspecialidadContratada;
-    }
-
-    public void setIdEspecialidadContratada(Short idEspecialidadContratada) {
-        this.idEspecialidadContratada = idEspecialidadContratada;
     }
 
     public EspecialidadEntity getEspecialidadEntity() {

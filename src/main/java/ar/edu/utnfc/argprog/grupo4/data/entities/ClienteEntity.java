@@ -53,17 +53,15 @@ public class ClienteEntity implements DalEntity, Serializable
     {
     }
 
-    public ClienteEntity(Short idClientes)
-    {
-        this.idCliente = idClientes;
+    public ClienteEntity(String razonSocial, int cuit, String mail, String cel) {
+        this.razonSocial = razonSocial;
+        this.cuit = cuit;
+        this.mail = mail;
+        this.cel = cel;
     }
 
     public Short getIdCliente() {
         return idCliente;
-    }
-
-    public void setIdCliente(Short idCliente) {
-        this.idCliente = idCliente;
     }
 
     public String getRazonSocial() {

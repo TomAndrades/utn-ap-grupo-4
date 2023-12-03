@@ -9,6 +9,7 @@ import ar.edu.utnfc.argprog.grupo4.data.commons.DalEntity;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -42,32 +43,25 @@ public class IncidenteEntity implements DalEntity,Serializable
     private TecnicoEntity tecnicoEntity;
     @Basic(optional = false)
     @Column(name = "resuelto")
-    private String resuelto;
+    private boolean resuelto;
     @Column(name = "fechaCreacion")
     @Temporal(TemporalType.DATE)
-    private Date fechaCreacion;
+    private LocalDateTime fechaCreacion;
     @Column(name = "fechaSolucion")
     @Temporal(TemporalType.DATE)
-    private Date fechaSolucion;
+    private LocalDateTime fechaSolucion;
+    @Column(name = "descripcion")
+    private String descripcion;
     
 
     public IncidenteEntity()
     {
     }
 
-    public IncidenteEntity(Short idIncidente)
-    {
-        this.idIncidente = idIncidente;
-    }
-
-    public IncidenteEntity(Short idIncidente, ClienteEntity clienteEntity, EspecialidadEntity especialidadEntity, TecnicoEntity tecnicoEntity, String resuelto, Date fechaCreacion, Date fechaSolucion) {
-        this.idIncidente = idIncidente;
-        this.clienteEntity = clienteEntity;
-        this.especialidadEntity = especialidadEntity;
-        this.tecnicoEntity = tecnicoEntity;
-        this.resuelto = resuelto;
-        this.fechaCreacion = fechaCreacion;
-        this.fechaSolucion = fechaSolucion;
+    public IncidenteEntity(String descripcion) {
+        this.resuelto = false;
+        this.fechaCreacion = LocalDateTime.now();
+        this.descripcion = descripcion;
     }
 
     public Short getIdIncidente() {
@@ -102,31 +96,37 @@ public class IncidenteEntity implements DalEntity,Serializable
         this.tecnicoEntity = tecnicoEntity;
     }
 
-    public String getResuelto() {
+    public boolean getResuelto() {
         return resuelto;
     }
 
-    public void setResuelto(String resuelto) {
-        this.resuelto = resuelto;
+    public void setResuelto() {
+        this.resuelto = true;
     }
 
-    public Date getFechaCreacion() {
+    public LocalDateTime getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
+    public void setFechaCreacion(LocalDateTime fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public Date getFechaSolucion() {
+    public LocalDateTime getFechaSolucion() {
         return fechaSolucion;
     }
 
-    public void setFechaSolucion(Date fechaSolucion) {
+    public void setFechaSolucion(LocalDateTime fechaSolucion) {
         this.fechaSolucion = fechaSolucion;
     }
 
-    
+    public String getDescripcion() {
+        return descripcion;
+    }
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     @Override
     public int hashCode()
     {

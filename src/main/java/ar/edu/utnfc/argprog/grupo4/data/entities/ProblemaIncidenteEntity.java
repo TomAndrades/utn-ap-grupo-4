@@ -47,13 +47,38 @@ public class ProblemaIncidenteEntity implements DalEntity,Serializable
     {
     }
 
-    public ProblemaIncidenteEntity(Short idProblemaIncidente)
-    {
-        this.idProblemaIncidente = idProblemaIncidente;
+    public IncidenteEntity getIncidenteEntity() {
+        return incidenteEntity;
     }
 
-    
-    
+    public void setIncidenteEntity(IncidenteEntity incidenteEntity) {
+        this.incidenteEntity = incidenteEntity;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public int getResuelto() {
+        return resuelto;
+    }
+
+    public void setResuelto(int resuelto) {
+        this.resuelto = resuelto;
+    }
+
     @Override
     public int hashCode()
     {

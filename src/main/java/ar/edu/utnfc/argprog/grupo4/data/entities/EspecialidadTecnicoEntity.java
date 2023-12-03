@@ -27,7 +27,7 @@ public class EspecialidadTecnicoEntity implements DalEntity, Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idEspecialidadTecnico")
+    @Column(name = "idEspecialidad_Tecnico")
     private Short idEspecialidadTecnico;
     @JoinColumn(name = "idEspecialidad", referencedColumnName = "idEspecialidad")
     @ManyToOne
@@ -42,24 +42,11 @@ public class EspecialidadTecnicoEntity implements DalEntity, Serializable
     {
     }
 
-    public EspecialidadTecnicoEntity(Short idEspecialidadTecnico)
-    {
-        this.idEspecialidadTecnico = idEspecialidadTecnico;
-    }
-
-    public EspecialidadTecnicoEntity(Short idEspecialidadTecnico, EspecialidadEntity especialidadEntity, TecnicoEntity tecnicoEntity) {
-        this.idEspecialidadTecnico = idEspecialidadTecnico;
-        this.especialidadEntity = especialidadEntity;
-        this.tecnicoEntity = tecnicoEntity;
-    }
 
     public Short getIdEspecialidadTecnico() {
         return idEspecialidadTecnico;
     }
 
-    public void setIdEspecialidadTecnico(Short idEspecialidadTecnico) {
-        this.idEspecialidadTecnico = idEspecialidadTecnico;
-    }
 
 
     public EspecialidadEntity getEspecialidadEntity() {

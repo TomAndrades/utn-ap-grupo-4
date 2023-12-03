@@ -2,10 +2,8 @@ package ar.edu.utnfc.argprog.grupo4;
 
 import ar.edu.utnfc.argprog.grupo4.data.commons.LocalEntityManagerProvider;
 import ar.edu.utnfc.argprog.grupo4.data.entities.EspecialidadEntity;
-import ar.edu.utnfc.argprog.grupo4.data.repositories.EspecialidadContratadaRepository;
 import ar.edu.utnfc.argprog.grupo4.data.repositories.EspecialidadRepository;
 
-import java.sql.SQLOutput;
 import java.util.List;
 
 /**

@@ -53,13 +53,7 @@ public class TecnicoEntity implements DalEntity,Serializable
     {
     }
 
-    public TecnicoEntity(Short actorId)
-    {
-        this.idTecnico = idTecnico;
-    }
-
-    public TecnicoEntity(Short idTecnico, int legajo, String nombre, int dni, String mail, String cel) {
-        this.idTecnico = idTecnico;
+    public TecnicoEntity(int legajo, String nombre, int dni, String mail, String cel) {
         this.legajo = legajo;
         this.nombre = nombre;
         this.dni = dni;
@@ -69,10 +63,6 @@ public class TecnicoEntity implements DalEntity,Serializable
 
     public Short getIdTecnico() {
         return idTecnico;
-    }
-
-    public void setIdTecnico(Short idTecnico) {
-        this.idTecnico = idTecnico;
     }
 
     public int getLegajo() {
