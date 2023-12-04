@@ -3,13 +3,12 @@ package ar.edu.utnfc.argprog.grupo4.operacion;
 import ar.edu.utnfc.argprog.grupo4.data.commons.LocalEntityManagerProvider;
 import ar.edu.utnfc.argprog.grupo4.data.entities.*;
 import ar.edu.utnfc.argprog.grupo4.data.repositories.*;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import jakarta.persistence.EntityManager;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class Agregar implements Runnable {
 
@@ -30,8 +29,7 @@ public class Agregar implements Runnable {
         cl= new ClienteRepository().findByCuit(cuit);
         if(cl==null) {
             EspecialidadContratadaEntity ec = new EspecialidadContratadaEntity();
-            IncidenteEntity in = new IncidenteEntity();
-            ProblemaIncidenteEntity pi = new ProblemaIncidenteEntity();
+
             System.out.print("Ingrese Razon Social: ");
             rz = sc.nextLine();
             System.out.print("Ingrese E-mail: ");
@@ -76,10 +74,9 @@ public class Agregar implements Runnable {
 
         System.out.print("Por que especialidad es el problema: ");
         problema=sc.nextLine();
-        EspecialidadEntity ct = new EspecialidadEntity();
         listContratado.forEach(f->{
-            if(problema.equals(f.getEspecialidadEntity().getNombre())){
-                 ct = f.getEspecialidadEntity();
+            if(problema.equals(f.getEspecialidadEntity().getNombre())){     //Obtengo la especialidad
+                 EspecialidadEntity ct = f.getEspecialidadEntity();
             }
         });
         System.out.println("Ingrese una descripcion del incidente:");
@@ -93,7 +90,42 @@ public class Agregar implements Runnable {
         int idTecnico;
         System.out.print("Ingrese el id del Tecnico: ");
         idTecnico = sc.nextInt();
+        Date ingreso,egreso;
+        try {
+            System.out.print("Ingrese la fecha de ingreso(DD/MM/AAAA): ");
+            String fecha;
+            fecha=sc.nextLine();
+            SimpleDateFormat parsear= new SimpleDateFormat("DD/MM/AAAA");
+            ingreso=parsear.parse(fecha);
+            System.out.print("Ingrese la fecha de egreso estimada(DD/MM/AAAA): ");
+            fecha=sc.nextLine();
+            egreso=parsear.parse(fecha);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        IncidenteEntity in = new IncidenteEntity();
+        ProblemaIncidenteEntity pi = new ProblemaIncidenteEntity();
 
-        
+        TecnicoEntity tecnico = new TecnicoRepository().findById(idTecnico);     // Esta devolviendo una lista Por eso el error
+        in.setClienteEntity(cl);
+        in.setDescripcion(des);
+        in.setEspecialidadEntity(ct);
+        in.setTecnicoEntity(tecnico);
+        em.getTransaction().begin();
+        em.persist(in);
+        em.getTransaction().commit();
+
+        pi.setDescripcion(des);
+        pi.setResuelto(0);
+        pi.setIncidenteEntity(in);
+        String tipo;
+        System.out.print("Ingrese el Tipo de Problema: ");
+        tipo=sc.nextLine();
+        pi.setTipo(tipo);
+
+        em.getTransaction().begin();
+        em.persist(pi);
+        em.getTransaction().commit();
+
     }
 }
