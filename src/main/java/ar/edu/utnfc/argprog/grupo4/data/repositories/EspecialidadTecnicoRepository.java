@@ -11,12 +11,14 @@ import java.util.List;
 
 public class EspecialidadTecnicoRepository extends Repository<EspecialidadTecnicoEntity, Integer> {
 
-    public List<EspecialidadTecnicoEntity> findByEspecialidad(int idEspecialidad) {
+    public EspecialidadTecnicoEntity findByEspecialidad(int idEspecialidad) {
         try {
             String className = getEntityClass().getSimpleName();
-            Query query = entityManager.createQuery("SELECT t FROM EspecialidadTecnicoEntity t WHERE t.especialidadEntity = " + idEspecialidad);
+            Query query = entityManager.createNamedQuery("EspecialidadTecnicoEntity.findByIdTecnico")
+                    .setParameter("id_Especialidad", idEspecialidad);
 
-            return query.getResultList();
+            return (EspecialidadTecnicoEntity) query.getSingleResult();
+
         }
         catch (HibernateException ex) {
             throw new TechnicalException(ex);

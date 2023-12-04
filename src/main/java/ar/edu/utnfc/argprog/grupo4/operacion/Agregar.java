@@ -2,8 +2,7 @@ package ar.edu.utnfc.argprog.grupo4.operacion;
 
 import ar.edu.utnfc.argprog.grupo4.data.commons.LocalEntityManagerProvider;
 import ar.edu.utnfc.argprog.grupo4.data.entities.*;
-import ar.edu.utnfc.argprog.grupo4.data.repositories.ClienteRepository;
-import ar.edu.utnfc.argprog.grupo4.data.repositories.EspecialidadRepository;
+import ar.edu.utnfc.argprog.grupo4.data.repositories.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -52,7 +51,7 @@ public class Agregar implements Runnable {
 
             System.out.print("Ingrese la cantidad de especialidades que tiene contratadas el cliente");
             n=sc.nextInt();
-            for(int i=0;i<n;i++){
+            for(i=0;i<n;i++){
                 System.out.print("Ingrese especialidad:");
                 espCon.add(sc.nextLine());
             }
@@ -72,8 +71,29 @@ public class Agregar implements Runnable {
         }else{
             System.out.println("El cliente ya se encuentra en la BD");
         }
+        List<EspecialidadContratadaEntity> listContratado = new EspecialidadContratadaRepository().findClienteByCuit(cuit);// pido las Especialidades del cliente
+        String problema;
+
+        System.out.print("Por que especialidad es el problema: ");
+        problema=sc.nextLine();
+        EspecialidadEntity ct = new EspecialidadEntity();
+        listContratado.forEach(f->{
+            if(problema.equals(f.getEspecialidadEntity().getNombre())){
+                 ct = f.getEspecialidadEntity();
+            }
+        });
+        System.out.println("Ingrese una descripcion del incidente:");
+        des=sc.nextLine();
 
 
+        EspecialidadTecnicoEntity Esptecnicos = new EspecialidadTecnicoRepository().findByEspecialidad(ct.getIdEspecialidad());// Esta mal....Esta devolviendo un solo tecnico
+        List<TecnicoEntity> Tecnicos = new TecnicoRepository().findById(Esptecnicos.getIdEspecialidadTecnico());
+        System.out.println("Elija un tecnico para asignar: ");
+        Tecnicos.forEach(System.out::println);
+        int idTecnico;
+        System.out.print("Ingrese el id del Tecnico: ");
+        idTecnico = sc.nextInt();
 
+        
     }
 }
