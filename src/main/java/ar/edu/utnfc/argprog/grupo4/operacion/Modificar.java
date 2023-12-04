@@ -26,6 +26,7 @@ public class Modificar implements Runnable{
         em.getTransaction().commit();
         em.detach(in);
         in.setResuelto();
+        in=em.merge(in);
         em.getTransaction().begin();
         em.persist(in);
         em.getTransaction().commit();
