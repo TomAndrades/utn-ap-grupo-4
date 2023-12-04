@@ -18,7 +18,7 @@ public class Agregar implements Runnable {
     public void run() {
         Scanner sc = new Scanner(System.in);
         String rz,mail,cel,des,cuit;
-        int n;
+        int n,i;
         List<String> espCon = new ArrayList<>();
         List<EspecialidadEntity> listEs= new EspecialidadRepository()
                 .findAll();
@@ -48,7 +48,7 @@ public class Agregar implements Runnable {
             em.persist(cl);
             em.getTransaction().commit();// Subo el cliente a la BD
 
-            cl= new ClienteRepository().findByCuit(cuit);// pido el cliente para obtener el ID
+            cl= new ClienteRepository().findByCuit(cuit);// Pido el cliente para obtener el ID
 
             System.out.print("Ingrese la cantidad de especialidades que tiene contratadas el cliente");
             n=sc.nextInt();
@@ -56,14 +56,22 @@ public class Agregar implements Runnable {
                 System.out.print("Ingrese especialidad:");
                 espCon.add(sc.nextLine());
             }
-
-            while(n>0){
-                ec.setClienteEntity(cl);
-                
-                n--;
+            ec.setClienteEntity(cl);
+            i=0;
+            for(String s : espCon){
+                while(i<listEs.size()) {// No se me ocurrio otra forma de hacerlo pero si se puede cambiar mejor
+                    if(s.equals(listEs.get(i).getNombre())) {
+                        ec.setEspecialidadEntity(listEs.get(i));
+                        em.getTransaction().begin();
+                        em.persist(ec);
+                        em.getTransaction().commit();
+                    }
+                    i++;
+                }
             }
+        }else{
+            System.out.println("El cliente ya se encuentra en la BD");
         }
-
 
 
 
