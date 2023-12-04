@@ -9,6 +9,8 @@ import jakarta.persistence.EntityManager;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.List;
+import java.util.stream.Stream;
 
 public class Agregar implements Runnable {
 
@@ -22,12 +24,11 @@ public class Agregar implements Runnable {
                 .findAll();
         EntityManager em = LocalEntityManagerProvider.getEntityManager();
 
-        ClienteEntity cl = new ClienteEntity();
-
         System.out.print("Ingrese CUIT del Cliente: ");
         cuit=sc.nextLine();
-        cl= new ClienteRepository().findByCuit(cuit);
+        ClienteEntity cl= new ClienteRepository().findByCuit(cuit);
         if(cl==null) {
+            cl = new ClienteEntity();
             EspecialidadContratadaEntity ec = new EspecialidadContratadaEntity();
 
             System.out.print("Ingrese Razon Social: ");
@@ -51,7 +52,9 @@ public class Agregar implements Runnable {
             n=sc.nextInt();
             for(i=0;i<n;i++){
                 System.out.print("Ingrese especialidad:");
-                espCon.add(sc.nextLine());
+                String pal;
+                pal=sc.nextLine();
+                espCon.add(pal);
             }
             ec.setClienteEntity(cl);
             i=0;
@@ -74,22 +77,24 @@ public class Agregar implements Runnable {
 
         System.out.print("Por que especialidad es el problema: ");
         problema=sc.nextLine();
-        EspecialidadEntity ct = null;
-        listContratado.forEach(f->{
-
-        });
+        EspecialidadEntity ct =new EspecialidadEntity();
 
         for (EspecialidadContratadaEntity x: listContratado) {
             if(problema.equals(x.getEspecialidadEntity().getNombre())){     //Obtengo la especialidad
                 ct = x.getEspecialidadEntity();
+                break;
             }
         }
         System.out.println("Ingrese una descripcion del incidente:");
         des=sc.nextLine();
 
 
-        EspecialidadTecnicoEntity Esptecnicos = new EspecialidadTecnicoRepository().findByEspecialidad(ct.getIdEspecialidad());// Esta mal....Esta devolviendo un solo tecnico
-        List<TecnicoEntity> Tecnicos = new TecnicoRepository().findById(Esptecnicos.getIdEspecialidadTecnico());
+        List<EspecialidadTecnicoEntity> Esptecnicos = new EspecialidadTecnicoRepository().findByEspecialidad(ct.getIdEspecialidad());
+        List<TecnicoEntity> Tecnicos = new ArrayList<>();
+
+        for (EspecialidadTecnicoEntity x : Esptecnicos) {
+            Tecnicos.add(new TecnicoRepository().findById(x.getTecnicoEntity().getIdTecnico()));
+        }
         System.out.println("Elija un tecnico para asignar: ");
         Tecnicos.forEach(System.out::println);
         int idTecnico;

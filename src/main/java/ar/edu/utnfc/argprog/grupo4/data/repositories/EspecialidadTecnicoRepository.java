@@ -11,13 +11,13 @@ import java.util.List;
 
 public class EspecialidadTecnicoRepository extends Repository<EspecialidadTecnicoEntity, Integer> {
 
-    public EspecialidadTecnicoEntity findByEspecialidad(int idEspecialidad) {
+    public List<EspecialidadTecnicoEntity> findByEspecialidad(int idEspecialidad) {
         try {
             String className = getEntityClass().getSimpleName();
             Query query = entityManager.createNamedQuery("EspecialidadTecnicoEntity.findByIdTecnico")
                     .setParameter("id_Especialidad", idEspecialidad);
 
-            return (EspecialidadTecnicoEntity) query.getSingleResult();
+            return query.getResultList();
 
         }
         catch (HibernateException ex) {

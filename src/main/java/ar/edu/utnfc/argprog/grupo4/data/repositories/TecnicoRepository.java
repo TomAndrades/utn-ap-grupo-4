@@ -14,13 +14,13 @@ import java.util.List;
 
 public class TecnicoRepository extends Repository<TecnicoEntity, Integer> {
 
-    public List<TecnicoEntity> findById(int id) {
+    public TecnicoEntity findById(int id) {
         try {
             String className = getEntityClass().getSimpleName();
             Query query = entityManager.createNamedQuery("TecnicoEntity.findById")
                     .setParameter("id_tecnico", id);
 
-            return query.getResultList();
+            return (TecnicoEntity) query.getSingleResult();
 
         }
         catch (HibernateException ex) {

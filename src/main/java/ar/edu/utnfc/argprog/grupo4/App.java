@@ -1,5 +1,6 @@
 package ar.edu.utnfc.argprog.grupo4;
 
+import ar.edu.utnfc.argprog.grupo4.data.commons.LocalEntityManagerProvider;
 import ar.edu.utnfc.argprog.grupo4.data.entities.EspecialidadContratadaEntity;
 import ar.edu.utnfc.argprog.grupo4.data.repositories.ClienteRepository;
 import ar.edu.utnfc.argprog.grupo4.data.repositories.EspecialidadContratadaRepository;
@@ -19,9 +20,7 @@ public class App
 
     public static void main(String[] args){
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("UTNAppGrupo4-PU");
-
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = LocalEntityManagerProvider.getEntityManager();
 
         Runnable operacion[]={
                 ()-> new Agregar().run(),
@@ -50,8 +49,8 @@ public class App
             }
         }while(a!=0);
 
-        List<EspecialidadContratadaEntity> especialidad1 = new EspecialidadContratadaRepository().findClienteByCuit("20419140857");
-        System.out.println(especialidad1);
+//        List<EspecialidadContratadaEntity> especialidad1 = new EspecialidadContratadaRepository().findClienteByCuit("20419140857");
+//        System.out.println(especialidad1);
 
 
         em.close();
