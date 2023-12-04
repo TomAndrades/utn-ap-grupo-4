@@ -74,11 +74,16 @@ public class Agregar implements Runnable {
 
         System.out.print("Por que especialidad es el problema: ");
         problema=sc.nextLine();
+        EspecialidadEntity ct = null;
         listContratado.forEach(f->{
-            if(problema.equals(f.getEspecialidadEntity().getNombre())){     //Obtengo la especialidad
-                 EspecialidadEntity ct = f.getEspecialidadEntity();
-            }
+
         });
+
+        for (EspecialidadContratadaEntity x: listContratado) {
+            if(problema.equals(x.getEspecialidadEntity().getNombre())){     //Obtengo la especialidad
+                ct = x.getEspecialidadEntity();
+            }
+        }
         System.out.println("Ingrese una descripcion del incidente:");
         des=sc.nextLine();
 
