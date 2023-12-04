@@ -24,7 +24,7 @@ public class LocalEntityManagerProvider
         em = emf.createEntityManager();
     }
     
-    public static EntityManager getEntityManager()
+    public static EntityManager getEntityManager()// Creo un patron singleton por el echo de que el entity manager demora demaciado en crearse; Esto me lleva amantener el entity manager creado y cerrarlo al finalizar la aplicacion
     {
         if (emProv == null)
             emProv = new LocalEntityManagerProvider();

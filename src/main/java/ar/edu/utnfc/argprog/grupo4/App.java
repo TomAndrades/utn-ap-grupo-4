@@ -1,35 +1,60 @@
 package ar.edu.utnfc.argprog.grupo4;
 
-import ar.edu.utnfc.argprog.grupo4.data.commons.LocalEntityManagerProvider;
-import ar.edu.utnfc.argprog.grupo4.data.entities.ClienteEntity;
 import ar.edu.utnfc.argprog.grupo4.data.entities.EspecialidadContratadaEntity;
-import ar.edu.utnfc.argprog.grupo4.data.entities.EspecialidadEntity;
 import ar.edu.utnfc.argprog.grupo4.data.repositories.ClienteRepository;
 import ar.edu.utnfc.argprog.grupo4.data.repositories.EspecialidadContratadaRepository;
-import ar.edu.utnfc.argprog.grupo4.data.repositories.EspecialidadRepository;
+import ar.edu.utnfc.argprog.grupo4.operacion.Agregar;
+import ar.edu.utnfc.argprog.grupo4.operacion.Listar;
+import ar.edu.utnfc.argprog.grupo4.operacion.Modificar;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 import java.util.List;
+import java.util.Scanner;
+
 
 public class App 
 {
 
-    public static void main(String[] args)
-    {
-//        ClienteRepository clienteRepository = new ClienteRepository();
-//        System.out.println("\n\nInicio de las pruebas ==>");
-////
-//        List<EspecialidadContratadaEntity> listaEspecialidadContratada = new EspecialidadContratadaRepository().findClienteByCuit("12345678901");
-//        System.out.println("Lista de lenguajes antes del insert");
-//        listaEspecialidadContratada.stream()
-//                .forEach(l -> System.out.println(l));
-////        IncidenteEntity incidenteDePrueba = new IncidenteEntity("Este es un incidente de prueba");
-//        ClienteEntity cliente1 = new ClienteEntity("Tomas Andrades", "20419140857", "andradestom@gmail.com", "+5491162368476");
-//        clienteRepository.create(cliente1);
-//        clienteRepository.
-//        LocalEntityManagerProvider.closeEntityManager();
-        Object getCliente =  new ClienteRepository().findByCuit("20419140857");
+    public static void main(String[] args){
+
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("UTNAppGrupo4-PU");
+
+        EntityManager em = emf.createEntityManager();
+
+        Runnable operacion[]={
+                ()-> new Agregar().run(),
+                ()-> new Modificar().run(),
+                ()-> new Listar().run(),
+        };
+        int a;
+        System.out.println("Bienvenido al sistema de Incidentes ");
+
+        Scanner leer = new Scanner(System.in);
+
+        do{
+            System.out.println("Ingrese un la opcion requerida:");
+            System.out.println("1: Agregar Incidente");
+            System.out.println("2: Modificar estado de incidente");
+            System.out.println("3: Listar Incidentes");
+            System.out.println("0: Salir");
+            System.out.print("Ingrese su opcion: ");
+            a=leer.nextInt();
+            if(a<0 || a>3){
+                System.out.println("Opcion incorrecta...\nVuelva a ingresar....");
+            }else{
+                if(a!=0){
+                    operacion[a-1].run();
+                }
+            }
+        }while(a!=0);
+
         List<EspecialidadContratadaEntity> especialidad1 = new EspecialidadContratadaRepository().findClienteByCuit("20419140857");
         System.out.println(especialidad1);
+
+
+        em.close();
 
     }
 }

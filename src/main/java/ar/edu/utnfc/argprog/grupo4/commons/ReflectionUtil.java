@@ -11,7 +11,7 @@ public class ReflectionUtil {
     /* Generic Types */
 
     public static <T> Class<T> getGenericTypeClass(Class<?> targetClass) {
-        System.out.println(((Class<T>) ((ParameterizedType) targetClass.getGenericSuperclass()).getActualTypeArguments()[0]).getName());
+        //System.out.println(((Class<T>) ((ParameterizedType) targetClass.getGenericSuperclass()).getActualTypeArguments()[0]).getName());  // Esto devuelve el nombre de la clase a la cual esta llamando el entity manager
         return (Class<T>) ((ParameterizedType) targetClass.getGenericSuperclass()).getActualTypeArguments()[0];
 
     }

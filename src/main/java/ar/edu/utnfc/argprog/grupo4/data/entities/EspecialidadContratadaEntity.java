@@ -90,11 +90,16 @@ public class EspecialidadContratadaEntity implements DalEntity, Serializable
 
     @Override
     public String toString() {
-        return "EspecialidadContratadaEntity{" +
-                "idEspecialidadContratada=" + idEspecialidadContratada +
-                ", especialidadEntity=" + especialidadEntity +
-                ", clienteEntity=" + clienteEntity +
-                '}';
+        return new StringBuffer()
+                .append("Especialidad Contratada: {")
+                .append("Id Especialidad Contratada= ")
+                .append(this.idEspecialidadContratada)
+                .append(", Especialidad: ")
+                .append(this.especialidadEntity)
+                .append(", Cliente= ")
+                .append(this.clienteEntity)
+                .append("}")
+                .toString();
     }
 
 }

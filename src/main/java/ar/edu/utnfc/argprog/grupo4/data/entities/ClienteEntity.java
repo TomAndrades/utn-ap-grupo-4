@@ -14,8 +14,8 @@ import jakarta.persistence.*;
  *
  * @author Loa
  */
-@Entity
-@Table(name = "clientes")
+@Entity// Le avisa a JPA que ClienteEntity es una entidad
+@Table(name = "clientes")// Le dice a JPA que la tabla se llama clientes y no ClienteEntity; se agrega para decir el nombre de la tabla
 @NamedQueries(
 {
     @NamedQuery(name = "ClienteEntity.findAll", query = "SELECT c FROM ClienteEntity c"),
@@ -27,10 +27,10 @@ import jakarta.persistence.*;
 public class ClienteEntity implements DalEntity, Serializable
 {
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id//   Clave primaria de la tabla
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//   Le dice que se genera
     @Basic(optional = false)
-    @Column(name = "idCliente")
+    @Column(name = "idCliente")// le dice como se llama la columna
     private Short idCliente;
     @Basic(optional = false)
     @Column(name = "razonSocial")
@@ -123,13 +123,20 @@ public class ClienteEntity implements DalEntity, Serializable
 
     @Override
     public String toString() {
-        return "ClienteEntity{" +
-                "idCliente=" + idCliente +
-                "\n, razonSocial='" + razonSocial + '\'' +
-                "\n, cuit='" + cuit + '\'' +
-                "\n, mail='" + mail + '\'' +
-                "\n, cel='" + cel + '\'' +
-                "\n}";
+        return new StringBuffer()
+                .append("Cliente: {")
+                .append("Id Cliente= ")
+                .append(this.idCliente)
+                .append("\n, Razon Social: ")
+                .append(this.razonSocial)
+                .append("\n, Cuit: ")
+                .append(this.cuit)
+                .append("\n, E-mail: ")
+                .append(this.mail)
+                .append("\n, Celular: ")
+                .append(this.cel)
+                .append("\n}")
+                .toString();
     }
 
 }

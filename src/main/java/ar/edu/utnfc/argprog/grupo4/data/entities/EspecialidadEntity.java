@@ -19,7 +19,6 @@ import java.io.Serializable;
 @NamedQueries(
 {
     @NamedQuery(name = "EspecialidadEntity.findAll", query = "SELECT e FROM EspecialidadEntity e"),
-    
 })
 public class EspecialidadEntity implements DalEntity, Serializable
 {
@@ -91,11 +90,16 @@ public class EspecialidadEntity implements DalEntity, Serializable
 
     @Override
     public String toString() {
-        return "EspecialidadEntity{" +
-                "idEspecialidad=" + idEspecialidad +
-                ", nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                '}';
+        return new StringBuffer()
+                .append("Especialidad: {")
+                .append("Id Epecialidad= ")
+                .append(this.idEspecialidad)
+                .append(", Nombre= ")
+                .append(this.nombre)
+                .append(", Descripcion= ")
+                .append(this.descripcion)
+                .append("}")
+                .toString();
     }
 
 }
