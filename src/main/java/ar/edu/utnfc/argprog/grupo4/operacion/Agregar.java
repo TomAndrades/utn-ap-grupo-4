@@ -49,18 +49,17 @@ public class Agregar implements Runnable {
 
             cl= new ClienteRepository().findByCuit(cuit);// Pido el cliente para obtener el ID
 
-            System.out.print("Ingrese la cantidad de especialidades que tiene contratadas el cliente");
+            System.out.print("Ingrese la cantidad de especialidades que tiene contratadas el cliente: ");
             n = sc.nextInt();
             sc.nextLine();
             for(i=0;i<n;i++){
-                System.out.print("Ingrese especialidad:");
-                String pal;
-                pal=sc.nextLine();
-                espCon.add(pal);
+                System.out.print("Ingrese especialidad: ");
+                espCon.add(sc.nextLine());
             }
             ec.setClienteEntity(cl);
-            i=0;
+
             for(String s : espCon){
+                i=0;
                 while(i<listEs.size()) {// No se me ocurrio otra forma de hacerlo pero si se puede cambiar mejor
                     if(s.trim().equals(listEs.get(i).getNombre())) {
                         ec.setEspecialidadEntity(listEs.get(i));
