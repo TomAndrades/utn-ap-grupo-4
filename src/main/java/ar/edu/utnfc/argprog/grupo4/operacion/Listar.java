@@ -1,6 +1,7 @@
 package ar.edu.utnfc.argprog.grupo4.operacion;
 
 import ar.edu.utnfc.argprog.grupo4.data.entities.TecnicoEntity;
+import ar.edu.utnfc.argprog.grupo4.data.repositories.IncidenteRepository;
 import ar.edu.utnfc.argprog.grupo4.data.repositories.TecnicoRepository;
 
 import java.util.ArrayList;
@@ -16,8 +17,12 @@ public class Listar implements Runnable {
                 ()-> {
                     System.out.print("Ingrese la candidad de dias: ");
                     int n=sc.nextInt();
-                    List<TecnicoEntity> tecnico = new TecnicoRepository().listMasIncidentesResueltos(n);
-                    tecnico.forEach(System.out::println);
+                    List<TecnicoEntity> tecnicos = new TecnicoRepository().findAll();
+                    for (int i = 0; i < tecnicos.size(); i++) {
+                        TecnicoEntity tecnico = tecnicos.get(i);
+                        Long cant = new TecnicoRepository().listMasIncidentesResueltos(n, tecnico.getIdTecnico());
+                        System.out.println(tecnico.toString() + " Resolvio " + cant + " incidentes");
+                    }
                 },
                 ()-> new Modificar().run(),
                 ()-> new Listar().run(),

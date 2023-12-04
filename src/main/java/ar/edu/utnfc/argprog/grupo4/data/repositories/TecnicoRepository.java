@@ -33,17 +33,12 @@ public class TecnicoRepository extends Repository<TecnicoEntity, Integer> {
     }
     
 
-    public List<TecnicoEntity> listMasIncidentesResueltos(int dias) {
+    public Long listMasIncidentesResueltos(int dias, int idTecnico) {
         try {
-            String className = getEntityClass().getSimpleName();
-            Query query = entityManager.createQuery("SELECT COUNT(i) " +
-                                                      "FROM IncidenteEntity i " +
-                                                          "JOIN TecnicoEntity t ON i.idTecnico = t.idTecnico " +
-                                                     "WHERE i.fechaSolucion BETWEEN " + LocalDate.now().minusDays(dias) + " AND " + LocalDate.now());
+            Query query = entityManager.createQuery("SELECT COUNT(1) FROM IncidenteEntity i WHERE i.fechaSolucion BETWEEN " + 
+                LocalDate.now().minusDays(dias) + " AND " + LocalDate.now() + " AND i.tecnicoEntity.idTecnico = " + idTecnico);
 
-            return query.getResultList();
-            
- 
+            return (Long)query.getSingleResult();
         }
         catch (HibernateException ex) {
             throw new TechnicalException(ex);
