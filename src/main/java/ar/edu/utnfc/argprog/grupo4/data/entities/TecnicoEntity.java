@@ -136,6 +136,13 @@ public class TecnicoEntity implements DalEntity,Serializable
     @Override
     public String toString()
     {
-        return "ar.edu.utnfc.argprog.data.entities.TecnicoEntity[ idTecnico=" + idTecnico + " ]";
+        return new StringBuffer()
+                .append("TecnicoEntity[ idTecnico=")
+                .append(this.idTecnico)
+                .append(", Nombre: ")
+                .append(this.nombre)
+                .append(", Legajo: ")
+                .append(this.legajo)
+                .toString();
     }
 }

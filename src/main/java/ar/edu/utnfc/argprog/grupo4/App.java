@@ -49,9 +49,6 @@ public class App
             }
         }while(a!=0);
 
-//        List<EspecialidadContratadaEntity> especialidad1 = new EspecialidadContratadaRepository().findClienteByCuit("20419140857");
-//        System.out.println(especialidad1);
-
 
         em.close();
 
