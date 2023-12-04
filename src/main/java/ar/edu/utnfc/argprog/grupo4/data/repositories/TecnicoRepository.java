@@ -18,7 +18,7 @@ public class TecnicoRepository extends Repository<TecnicoEntity, Integer> {
         try {
             String className = getEntityClass().getSimpleName();
             Query query = entityManager.createNamedQuery("TecnicoEntity.findById")
-                    .setParameter("id_tecnico", id);
+                    .setParameter("idTecnico", id);
 
             return (TecnicoEntity) query.getSingleResult();
 

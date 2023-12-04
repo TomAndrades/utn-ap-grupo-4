@@ -30,7 +30,7 @@ public class Agregar implements Runnable {
         ClienteEntity cl= new ClienteRepository().findByCuit(cuit);
         if(cl==null) {
             cl = new ClienteEntity();
-            EspecialidadContratadaEntity ec = new EspecialidadContratadaEntity();
+
 
             System.out.print("Ingrese Razon Social: ");
             rz = sc.nextLine();
@@ -56,12 +56,14 @@ public class Agregar implements Runnable {
                 System.out.print("Ingrese especialidad: ");
                 espCon.add(sc.nextLine());
             }
-            ec.setClienteEntity(cl);
+
 
             for(String s : espCon){
                 i=0;
                 while(i<listEs.size()) {// No se me ocurrio otra forma de hacerlo pero si se puede cambiar mejor
                     if(s.trim().equals(listEs.get(i).getNombre())) {
+                        EspecialidadContratadaEntity ec = new EspecialidadContratadaEntity();
+                        ec.setClienteEntity(cl);
                         ec.setEspecialidadEntity(listEs.get(i));
                         em.getTransaction().begin();
                         em.persist(ec);
@@ -101,14 +103,15 @@ public class Agregar implements Runnable {
         int idTecnico;
         System.out.print("Ingrese el id del Tecnico: ");
         idTecnico = sc.nextInt();
+        sc.nextLine();
         Date ingreso,egreso;
         try {
             System.out.print("Ingrese la fecha de ingreso(DD/MM/AAAA): ");
             String fecha;
             fecha=sc.nextLine();
-            SimpleDateFormat parsear= new SimpleDateFormat("DD/MM/AAAA");
+            SimpleDateFormat parsear= new SimpleDateFormat("dd/MM/yyyy");
             ingreso=parsear.parse(fecha);
-            System.out.print("Ingrese la fecha de egreso estimada(DD/MM/AAAA): ");
+            System.out.print("Ingrese la fecha de egreso estimada(DD/MM/YYYY): ");
             fecha=sc.nextLine();
             egreso=parsear.parse(fecha);
         } catch (ParseException e) {
