@@ -15,7 +15,7 @@ public class EspecialidadTecnicoRepository extends Repository<EspecialidadTecnic
         try {
             String className = getEntityClass().getSimpleName();
             Query query = entityManager.createNamedQuery("EspecialidadTecnicoEntity.findByIdTecnico")
-                    .setParameter("id_Especialidad", idEspecialidad);
+                    .setParameter("idEspecialidad", idEspecialidad);
 
             return query.getResultList();
 

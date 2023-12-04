@@ -6,6 +6,7 @@ import ar.edu.utnfc.argprog.grupo4.data.repositories.*;
 
 import jakarta.persistence.EntityManager;
 
+import java.nio.Buffer;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -49,7 +50,8 @@ public class Agregar implements Runnable {
             cl= new ClienteRepository().findByCuit(cuit);// Pido el cliente para obtener el ID
 
             System.out.print("Ingrese la cantidad de especialidades que tiene contratadas el cliente");
-            n=sc.nextInt();
+            n = sc.nextInt();
+            sc.nextLine();
             for(i=0;i<n;i++){
                 System.out.print("Ingrese especialidad:");
                 String pal;
@@ -60,7 +62,7 @@ public class Agregar implements Runnable {
             i=0;
             for(String s : espCon){
                 while(i<listEs.size()) {// No se me ocurrio otra forma de hacerlo pero si se puede cambiar mejor
-                    if(s.equals(listEs.get(i).getNombre())) {
+                    if(s.trim().equals(listEs.get(i).getNombre())) {
                         ec.setEspecialidadEntity(listEs.get(i));
                         em.getTransaction().begin();
                         em.persist(ec);
@@ -80,7 +82,7 @@ public class Agregar implements Runnable {
         EspecialidadEntity ct =new EspecialidadEntity();
 
         for (EspecialidadContratadaEntity x: listContratado) {
-            if(problema.equals(x.getEspecialidadEntity().getNombre())){     //Obtengo la especialidad
+            if(problema.trim().equals(x.getEspecialidadEntity().getNombre())){     //Obtengo la especialidad
                 ct = x.getEspecialidadEntity();
                 break;
             }
