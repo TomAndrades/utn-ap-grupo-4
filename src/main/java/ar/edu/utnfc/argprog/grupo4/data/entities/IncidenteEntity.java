@@ -24,8 +24,8 @@ import java.util.Date;
 @NamedQueries(
 {
     @NamedQuery(name = "IncidenteEntity.findAll", query = "SELECT i FROM IncidenteEntity i"),
-    @NamedQuery(name = "IncidenteEntity.findByTecnico",query = "SELECT i FROM IncidenteEntity i WHERE i.tecnicoEntity.idTecnico = :idTecnico")
-    
+    @NamedQuery(name = "IncidenteEntity.findByTecnico",query = "SELECT i FROM IncidenteEntity i WHERE i.tecnicoEntity.idTecnico = :idTecnico"),
+    @NamedQuery (name = "IncidenteEntity.findByID", query= "SELECT i FROM IncidenteEntity i WHERE i.idIncidente = :idIncidente ")
 })
 public class IncidenteEntity implements DalEntity,Serializable
 {

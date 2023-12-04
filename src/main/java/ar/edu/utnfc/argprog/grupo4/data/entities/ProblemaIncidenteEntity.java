@@ -19,6 +19,7 @@ import jakarta.persistence.*;
 @NamedQueries(
 {
     @NamedQuery(name = "ProblemaIncidenteEntity.findAll", query = "SELECT p FROM ProblemaIncidenteEntity p"),
+    @NamedQuery (name = "ProblemaIncidenteEntity.findByID", query= "SELECT p FROM ProblemaIncidenteEntity p WHERE p.incidenteEntity.idIncidente = :idIncidente ")
     
 })
 public class ProblemaIncidenteEntity implements DalEntity,Serializable
