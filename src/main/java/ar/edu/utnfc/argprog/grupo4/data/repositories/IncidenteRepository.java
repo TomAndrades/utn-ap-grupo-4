@@ -33,7 +33,7 @@ public class IncidenteRepository extends Repository<IncidenteEntity, Integer> {
 
             String className = getEntityClass().getSimpleName();
             Query query = entityManager.createNamedQuery("IncidenteEntity.findById")
-                    .setParameter("IdIncidente", id);
+                    .setParameter("idIncidente", id);
 
             return (IncidenteEntity) query.getSingleResult();
 
